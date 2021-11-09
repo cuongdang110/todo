@@ -1,0 +1,36 @@
+@media (max-width: 415px) {
+  .completed {
+  }
+  .incompleted {
+  }
+  .incompleted > h3 {
+    color: #fff;
+    padding-bottom: 0.5rem;
+  }
+
+  .completed > h3 {
+    color: #fff;
+    padding: 0.5rem 0;
+  }
+  .item-incomplete {
+  }
+  .item-incomplete_box > input {
+    margin-right: 1rem;
+  }
+  .item-incomplete_box {
+    display: flex;
+  }
+  .item-incomplete-content > p:first-child {
+    color: #fff;
+    padding-bottom: 0.2rem;
+  }
+  .item-incomplete-content > p:last-child {
+    color: #373741;
+  }
+  .icon-open-input {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    color: #414c9b;
+  }
+}

@@ -1,0 +1,50 @@
+@media (max-width: 414px) {
+  .input-container {
+    position: absolute;
+    top: 0;
+    width: 20rem;
+    height: 19rem;
+    background-color: #fff;
+    margin-top: 10rem;
+    margin-left: 1rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .fa-times {
+    color: #72d1a7;
+    margin-left: 17rem;
+  }
+  .input-text-todo {
+    width: 90%;
+    padding: 0.5rem 0;
+    border-radius: 10px;
+    border: mediumaquamarine solid 1px;
+  }
+  h4 {
+    font-size: 22px;
+    color: #72d1a7;
+  }
+  h5 {
+    background-color: #72d1a7;
+    width: 25%;
+    padding: 0.5rem 2rem;
+    border-radius: 15px;
+    margin: 1rem 0;
+    margin-left: 10px;
+    cursor: pointer;
+    color: #fff;
+  }
+  .padding {
+    margin: 0.5rem 0;
+    margin-left: 10px;
+  }
+  button {
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    background-color: #72d1a7;
+  }
+}
