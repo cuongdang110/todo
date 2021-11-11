@@ -1,0 +1,10 @@
+.btn-remove {
+  color: #fff;
+  margin-left: auto;
+  background-color: aqua;
+  width: 4.5rem;
+  height: 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+  line-height: 23px;
+}

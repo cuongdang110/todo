@@ -1,23 +1,24 @@
-import { IInitTodo } from "../../interfaces";
+import { ITodo } from "../../interfaces";
+import "./style.css";
 interface Props {
   onClose: () => void;
-  onCompleted: (params: IInitTodo, index: number) => void;
+  handleCheckTodo: (item: ITodo) => void;
   className: string;
-  todo: IInitTodo[];
-  category: boolean;
+  todo: ITodo[];
+  isCategory: boolean;
   title: string;
-  test?: string;
   checked: boolean;
+  handleRemove: (item: ITodo) => void;
 }
-const TodoItem: React.FC<Props> = ({
+const TodoList: React.FC<Props> = ({
   onClose,
-  onCompleted,
+  handleCheckTodo,
   className,
   todo,
-  category,
+  isCategory,
   title,
   checked,
-  test,
+  handleRemove,
 }) => {
   return (
     <>
@@ -26,27 +27,26 @@ const TodoItem: React.FC<Props> = ({
         {todo.map((item, index) => {
           return (
             <div key={index} className="item-incomplete">
-              <label>
-                <div
-                  onClick={() => onCompleted(item, index)}
-                  className="item-incomplete_box"
-                >
-                  <input
-                    defaultChecked={checked}
-                    checked={checked}
-                    type="checkbox"
-                  />
-                  <div className="item-incomplete-content">
-                    <p>{item.title}</p>
-                    {category && <p>{item.category}</p>}
-                  </div>
+              <div className="item-incomplete_box">
+                <input
+                  onClick={(e) => handleCheckTodo(item)}
+                  defaultChecked={checked}
+                  checked={checked}
+                  type="checkbox"
+                />
+                <div className="item-incomplete-content">
+                  <p>{item.title}</p>
+                  {isCategory && <p>{item.category}</p>}
                 </div>
-              </label>
+                <span onClick={() => handleRemove(item)} className="btn-remove">
+                  Remove
+                </span>
+              </div>
             </div>
           );
         })}
       </div>
-      {category && (
+      {isCategory && (
         <div className="icon-open-input" onClick={() => onClose()}>
           <i className="fas fa-plus-circle fa-3x"></i>
         </div>
@@ -54,4 +54,4 @@ const TodoItem: React.FC<Props> = ({
     </>
   );
 };
-export default TodoItem;
+export default TodoList;

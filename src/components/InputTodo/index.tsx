@@ -1,16 +1,17 @@
 import { useState, memo } from "react";
 import "./index.css";
-
+import { v4 as uuidv4 } from 'uuid';
 type Props = {
-  onSubmit: (params: {
+  onAddTodo: (params: {
     title: string;
     category: string;
     complete: boolean;
+    id: number | string;
   }) => void;
   onClose: () => void;
 };
 
-const InputToDo: React.FC<Props> = ({ onSubmit, onClose }) => {
+const InputToDo: React.FC<Props> = ({ onAddTodo, onClose }) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
@@ -34,7 +35,7 @@ const InputToDo: React.FC<Props> = ({ onSubmit, onClose }) => {
         />
         <button
           className="padding"
-          onClick={() => onSubmit({ title, category, complete: true })}
+          onClick={() => onAddTodo({ title, category, complete: true , id: uuidv4()})}
         >
           Add to do
         </button>

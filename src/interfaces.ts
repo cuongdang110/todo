@@ -1,6 +1,6 @@
-export interface IInitTodo {
+export interface ITodo {
   title: string;
   category?: string;
   complete: boolean;
-  id?: number;
+  id: number | string;
 }

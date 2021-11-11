@@ -1,45 +1,51 @@
 import "./index.css";
-import { IInitTodo } from "../../interfaces";
-import TodoItem from "../TodoItem";
+import { ITodo } from "../../interfaces";
+import TodoList from "../TodoItem";
 interface Props {
   onClose: () => void;
   isOpen: Boolean;
-  onCompleted: (item: IInitTodo, index: number) => void;
+  handleCheckTodo: (item: ITodo) => void;
   className: string;
-  todo: IInitTodo[];
+  todoList: ITodo[];
   category: boolean;
   title: string;
-  test?: string;
+  handleRemove: (param: ITodo) => void;
 }
 const TodoApp: React.FC<Props> = ({
   onClose,
-  onCompleted,
+  handleCheckTodo,
   className,
   category,
-  todo,
-  title,
+  todoList,
+  handleRemove,
 }) => {
-  const todoInComplete = todo.filter((item): boolean => item.complete === true);
-  const todoCompleted = todo.filter((item): boolean => item.complete === false);
+  const todoInComplete = todoList.filter(
+    (item): boolean => item.complete === true
+  );
+  const todoCompleted = todoList.filter(
+    (item): boolean => item.complete === false
+  );
   return (
     <div className="wrapper">
-      <TodoItem
+      <TodoList
         checked={false}
         onClose={onClose}
-        onCompleted={onCompleted}
+        handleCheckTodo={handleCheckTodo}
         className={className}
-        category={category}
+        isCategory={category}
         title="Incompleted"
         todo={todoInComplete}
+        handleRemove={handleRemove}
       />
-      <TodoItem
+      <TodoList
+        handleRemove={handleRemove}
         checked={true}
         title="Completed"
         todo={todoCompleted}
         onClose={onClose}
-        onCompleted={onCompleted}
+        handleCheckTodo={handleCheckTodo}
         className={"completed"}
-        category={false}
+        isCategory={false}
       />
     </div>
   );
