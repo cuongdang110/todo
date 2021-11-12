@@ -9,6 +9,7 @@ interface Props {
   title: string;
   checked: boolean;
   handleRemove: (item: ITodo) => void;
+  handleOpenEdit?: () => void;
 }
 const TodoList: React.FC<Props> = ({
   onClose,
@@ -19,6 +20,7 @@ const TodoList: React.FC<Props> = ({
   title,
   checked,
   handleRemove,
+  handleOpenEdit
 }) => {
   return (
     <>
@@ -38,6 +40,7 @@ const TodoList: React.FC<Props> = ({
                   <p>{item.title}</p>
                   {isCategory && <p>{item.category}</p>}
                 </div>
+                <span onClick={handleOpenEdit} className='btn-add'>Edit</span>
                 <span onClick={() => handleRemove(item)} className="btn-remove">
                   Remove
                 </span>

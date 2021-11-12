@@ -7,7 +7,7 @@ export const todoAPI = {
     return axiosClient.get(url);
   },
   get(id: number) {
-    const url = `todos${id}`;
+    const url = `todos/${id}`;
     return axiosClient.get(url);
   },
   add(todo: ITodo) {
@@ -18,6 +18,10 @@ export const todoAPI = {
     const url = `/todos/${id}`;
     return axiosClient.delete(url);
   },
+  update(id: any, data : any) {
+    const url = `todos/${id}`;
+    return axiosClient.patch(url, data)
+  }
 };
 export const getTodos = async () => {
   try {

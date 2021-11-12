@@ -1,6 +1,6 @@
 import "./index.css";
 import { ITodo } from "../../interfaces";
-import TodoList from "../TodoItem";
+import TodoList from "../TodoList";
 interface Props {
   onClose: () => void;
   isOpen: Boolean;
@@ -10,9 +10,11 @@ interface Props {
   category: boolean;
   title: string;
   handleRemove: (param: ITodo) => void;
+  handleOpenEdit?: () => void;
 }
 const TodoApp: React.FC<Props> = ({
   onClose,
+  handleOpenEdit,
   handleCheckTodo,
   className,
   category,
@@ -36,6 +38,7 @@ const TodoApp: React.FC<Props> = ({
         title="Incompleted"
         todo={todoInComplete}
         handleRemove={handleRemove}
+        handleOpenEdit={handleOpenEdit}
       />
       <TodoList
         handleRemove={handleRemove}

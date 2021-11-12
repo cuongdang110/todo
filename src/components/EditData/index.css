@@ -1,0 +1,32 @@
+.wrapper-edit {
+  background-color: #fff;
+  top: 10rem;
+  right: 1rem;
+  left: 1rem;
+  padding: 2rem 1rem;
+  position: fixed;
+  border-radius: 20px;
+}
+.wrapper-edit > input {
+  padding: 0.5rem;
+  width: 90%;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  border: aqua solid 1px;
+}
+.wrapper-edit > input:focus-visible {
+  outline: none;
+}
+.wrapper-edit > h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.edit-todo {
+  margin-left: 15rem;
+  margin-top: 1rem;
+}
+.close-edit {
+  position: fixed;
+  top: 11rem;
+  right: 2rem;
+}

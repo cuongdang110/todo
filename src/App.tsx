@@ -4,25 +4,30 @@ import TodoApp from "./components/TodoApp/TodoApp";
 import Header from "./components/Header";
 import InputTodo from "./components/InputTodo";
 import { ITodo } from "./interfaces";
+import EditData from "./components/EditData";
 import { getTodos, addTodos, todoAPI } from "./components/sever/todo/todoAPI";
 
 function App() {
   const [isOpen, setIsOpen] = useState<Boolean>(false);
+  const [isOpenEdit, setIsOpenEdit] = useState<Boolean>(false);
   const [todoList, setTodoList] = useState<ITodo[]>([]);
   const onAddTodo = async (todo: ITodo) => {
     const { data } = await addTodos(todo);
     setTodoList([...todoList, data]);
     setIsOpen(!isOpen);
   };
+  const handleOpenEdit = () => {
+    setIsOpenEdit(!isOpenEdit);
+  };
   const onClose = () => {
     setIsOpen(!isOpen);
   };
   const handleRemove = async (param: ITodo) => {
     await todoAPI.remove(param.id);
-    const newTodo = todoList.filter(item => {
-      return item.id !== param.id
-    })
-    setTodoList(newTodo)
+    const newTodo = todoList.filter((item) => {
+      return item.id !== param.id;
+    });
+    setTodoList(newTodo);
   };
   const handleCheckTodo = (todo: ITodo) => {
     const newList = todoList.map((item) => {
@@ -45,6 +50,7 @@ function App() {
     (item): boolean => item.complete === false
   );
 
+  const handleEditData = (data: any) => {};
   useEffect(() => {
     getTodos().then((data) => {
       setTodoList(data);
@@ -67,8 +73,15 @@ function App() {
           className={"incompleted"}
           category={true}
           handleRemove={handleRemove}
+          handleOpenEdit={handleOpenEdit}
         />
         {isOpen && <InputTodo onAddTodo={onAddTodo} onClose={onClose} />}
+        {isOpenEdit && (
+          <EditData
+            handleEditData={handleEditData}
+            handleOpenEdit={handleOpenEdit}
+          />
+        )}
       </div>
     </div>
   );
